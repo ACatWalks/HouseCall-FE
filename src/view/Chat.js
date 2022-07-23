@@ -1,5 +1,6 @@
 import ChatCard from "./ChatCard";
 import NewChat from "./NewChat";
+import NavBar from "./NavBar";
 
 function Chat() {
     async function createComment(commentAttributes) {
@@ -29,6 +30,7 @@ function Chat() {
 
     return (
         <main>
+            <NavBar />
             <h2>Chat With a Doctor</h2>
             {comments}
             <hr />

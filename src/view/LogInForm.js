@@ -1,9 +1,10 @@
 import { useContext, useState } from "react"
-import { useHistory } from "react-router"
+//import { useHistory } from "react-router-dom"
 import { CurrentUser } from "../context/CurrentUser"
+import NavBar from "./NavBar"
 
 function LogInForm() {
-    const history = useHistory()
+    //const history = useHistory()
 
     const { setCurrentUser } = useContext(CurrentUser)
 
@@ -28,7 +29,7 @@ function LogInForm() {
         if(response.status === 200){
             setCurrentUser(data.user)
             console.log(data.user)
-            history.push('/')
+            //history.push('/')
         } else {
             setErrorMessage(data.message)
         }
@@ -36,6 +37,7 @@ function LogInForm() {
 
     return (
         <main>
+            <NavBar />
             <h1>Login</h1>
             {errorMessage !== null? (<div className="danger" role="alert">{errorMessage}</div>): null}
             <form onSubmit={handleSubmit}>

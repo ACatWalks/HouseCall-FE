@@ -1,4 +1,5 @@
 import { useState } from "react"
+import NavBar from "./NavBar"
 
 function SymptomForm() {
 
@@ -18,6 +19,7 @@ function SymptomForm() {
 
     return (
         <main>
+            <NavBar />
             <form onSubmit={handleSubmit}>
                 <h1>Please check the symptoms you are experiencing</h1>
                 <input type="checkbox" id="symptom1" name="symptom1" value="Anal Pain" onChange={e => setSymptoms([...symptoms, e.target.value])} />

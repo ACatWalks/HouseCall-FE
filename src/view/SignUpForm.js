@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router'
+//import { useHistory } from 'react-router-dom'
+import NavBar from './NavBar'
 
 function SignUpForm() {
-    const history = useHistory()
+    //const history = useHistory()
 
     const [user, setUser] = useState({
         firstName: '',
@@ -20,11 +21,12 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
-        history.push(`/`)
+        //history.push(`/`)
     }
 
     return (
         <main>
+            <NavBar />
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='firstName'>First Name</label>

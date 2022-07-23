@@ -1,0 +1,36 @@
+body {
+  text-align: center;
+  background-color: #1AB1E5;
+  color: #1A4CE5;
+  font-family: "Gill Sans", sans-serif;
+}
+body .nav {
+  display: flex;
+  flex-direction: row;
+}
+body .nav ul {
+  list-style-type: none;
+}
+body .nav a {
+  text-decoration: none;
+  color: #1A4CE5;
+}
+body .nav a:hover {
+  color: #006400;
+}
+body img {
+  height: 80vh;
+}
+body .form-btn {
+  border-radius: 10px;
+  padding: 25px;
+}
+body .border {
+  border: 1px dashed black;
+}
+body .danger {
+  background-color: firebrick;
+  color: whitesmoke;
+}
+
+/*# sourceMappingURL=style.css.map */
