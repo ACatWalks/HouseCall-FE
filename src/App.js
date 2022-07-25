@@ -16,7 +16,7 @@ function App() {
 export default App;
 
 //TO DO:
-//Styling
+
 //Fetch requests
 //Test 
 //User authentication

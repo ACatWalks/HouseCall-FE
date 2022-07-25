@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 function LogInForm() {
     //const history = useHistory()
 
-    const { setCurrentUser } = useContext(CurrentUser)
+    //const { setCurrentUser } = useContext(CurrentUser)
 
     const [credentials, setCredentials] = useState({
         email: '',
@@ -27,7 +27,7 @@ function LogInForm() {
         })
         const data = await response.json()
         if(response.status === 200){
-            setCurrentUser(data.user)
+            //setCurrentUser(data.user)
             console.log(data.user)
             //history.push('/')
         } else {
