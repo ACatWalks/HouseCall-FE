@@ -9,6 +9,7 @@ function SymptomForm() {
         e.preventDefault()
 
         await fetch(`http://localhost:4000/patients`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
