@@ -1,12 +1,16 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router"
-import { CurrentUser } from "../context/CurrentUser"
 import NavBar from "./NavBar"
 
 function LogInForm() {
     const navigate = useNavigate()
 
-    //const { setCurrentUser } = useContext(CurrentUser)
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    })
 
     const [credentials, setCredentials] = useState({
         email: '',
@@ -27,8 +31,7 @@ function LogInForm() {
         })
         const data = await response.json()
         if(response.status === 200){
-            //setCurrentUser(data.user)
-            console.log(data.user)
+            setUser(data.user)
             navigate('/')
         } else {
             setErrorMessage(data.message)
