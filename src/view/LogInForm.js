@@ -1,10 +1,10 @@
 import { useContext, useState } from "react"
-//import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router"
 import { CurrentUser } from "../context/CurrentUser"
 import NavBar from "./NavBar"
 
 function LogInForm() {
-    //const history = useHistory()
+    const navigate = useNavigate()
 
     //const { setCurrentUser } = useContext(CurrentUser)
 
@@ -29,7 +29,7 @@ function LogInForm() {
         if(response.status === 200){
             //setCurrentUser(data.user)
             console.log(data.user)
-            //history.push('/')
+            navigate('/')
         } else {
             setErrorMessage(data.message)
         }

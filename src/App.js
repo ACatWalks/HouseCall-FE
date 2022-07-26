@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>HouseCall</h1>
+      <h1>HouseCalls</h1>
       <img src="https://walkingmobilityclinics.com/wp-content/uploads/2019/01/group-of-doctors-1.jpg" />
       <p>Photo by walkingmobilityclinics.com</p>
     </div>
@@ -14,11 +14,3 @@ function App() {
 }
 
 export default App;
-
-//TO DO:
-
-//Fetch requests
-//Test 
-//User authentication
-//Readme
-//More styling
