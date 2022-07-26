@@ -1,9 +1,9 @@
 import { useState } from 'react'
-//import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import NavBar from './NavBar'
 
 function SignUpForm() {
-    //const history = useHistory()
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         firstName: '',
@@ -21,7 +21,7 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
-        //history.push(`/`)
+        navigate('/')
     }
 
     return (
