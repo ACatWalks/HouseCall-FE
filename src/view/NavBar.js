@@ -64,12 +64,28 @@ function NavBar() {
         }
     }
 
+    function toggle() {
+        if(!user.email){
+            return (
+                <li>
+                    <Link to="/login">Log In</Link>
+                </li>
+            )
+        } else{
+            return (
+                <li>
+                  <Link to="/" onClick={e => setUser({firstName: '', lastName: '', email: '', password: '', role: ''})}>Log Out</Link>  
+                </li>
+            )
+        }
+    }
+    
     return (
         <div className='nav'>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/signup">Sign Up</Link></li>
-                <li><Link to="/login">Log In</Link></li>
+                {toggle()}
                 <li><Link to="/edit">Edit Profile</Link></li>
                 <li><Link to="/symptoms">Report Symptoms</Link></li>
                 <li><Link to="/chat">Chat With a Doctor</Link></li>
