@@ -8,6 +8,7 @@ function NavBar() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/signup">Sign Up</Link></li>
                 <li><Link to="/login">Log In</Link></li>
+                <li><Link to="/edit">Edit Profile</Link></li>
                 <li><Link to="/symptoms">Report Symptoms</Link></li>
                 <li><Link to="/chat">Chat With a Doctor</Link></li>
             </ul>
