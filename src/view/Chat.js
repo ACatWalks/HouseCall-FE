@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 
 function Chat() {
     async function createComment(commentAttributes) {
-        const response = await fetch(`http://localhost:5000/comments`, {
+        const response = await fetch(`http://localhost:4000/comments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
