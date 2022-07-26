@@ -10,7 +10,7 @@ function NewChat({ onSubmit }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/users`)
+            const response = await fetch(`http://localhost:4000/users`)
             const users = await response.json()
             setComment({...comment, author: users[0]?.userId})
             setAuthors(users)
