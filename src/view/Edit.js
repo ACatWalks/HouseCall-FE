@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router'
 import NavBar from './NavBar'
 
-function SignUpForm() {
+function EditProfileForm() {
     const navigate = useNavigate()
+
+    const userId = useParams()
 
     const [user, setUser] = useState({
         firstName: '',
@@ -17,45 +19,42 @@ function SignUpForm() {
 
     const [medicalLicenseNumber, setMedicalLicenseNumber] = useState(0)
 
+    useEffect(() => {
+        const fetchData = async() => {
+            try {
+                const response = await fetch(`http://localhost:4000/patients/${userId}`)
+                const resData = await response.json()
+                setUser(resData)
+                setPatientProfileImage(resData.patientProfileImage)
+            } catch {
+                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const resData = await response.json()
+                setUser(resData)
+                setMedicalLicenseNumber(resData.medicalLicenseNumber)
+            }
+        }
+    }, [ userId ])
+
     async function handleSubmit(e, role) {
         e.preventDefault()
-        if(role === 'Doctor'){
-            await fetch(`http://localhost:4000/medical-provider/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
+        if(role === 'Doctor') {
+            await fetch(`http://localhost:4000/medical-provider/${user.userId}`, {
+                method: 'PUT', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
         } else {
-            await fetch(`http://localhost:4000/patients/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
+            await fetch(`http://localhost:4000/patients/${user.userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
         }
-        
-        navigate('/')
-    }
-    }
-    function handleRole(role) {
-        if(role === 'Doctor'){
-            return (
-                <div>
-                    <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={medicalLicenseNumber} id="medicalLicense" name="medicalLicense" onChange={e => setMedicalLicenseNumber(e.target.value)} />
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={patientProfileImage} onChange={e => setPatientProfileImage(e.target.value)} />
-                </div>
-            )
-        }
+        navigate(`/${user.userId}`)
     }
 
     function handleRole(role) {
@@ -79,9 +78,8 @@ function SignUpForm() {
     return (
         <main>
             <NavBar />
-            <h1>Sign Up</h1>
+            <h1>Edit Profile Page</h1>
             <form onSubmit={handleSubmit(user.role)}>
-                <h3>Sign Up As A:</h3>
                 <input type ='radio' id='doctor' name='role' value="Doctor" onClick={e => setUser({...user, role: "Doctor"})}/>
                 <label htmlFor='doctor'>Doctor</label>
                 <input type='radio' id='patient' name='role' value="Patient" onClick={e => setUser({...user, role: "Patient"})} />
@@ -95,10 +93,10 @@ function SignUpForm() {
                 <label htmlFor='password'>Password</label>
                 <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, password: e.target.value})} />
                 {handleRole(user.role)}
-                <input type="submit" className='form-btn' value="Sign Up" />
+                <input type="submit" className='form-btn' value="Save Changes" />
             </form>
         </main>
     )
 }
 
-export default SignUpForm
+export default EditProfileForm
