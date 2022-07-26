@@ -8,7 +8,8 @@ function SymptomForm() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        await fetch(`http://localhost:5000/patients/:id`, {
+        await fetch(`http://localhost:4000/patients`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
