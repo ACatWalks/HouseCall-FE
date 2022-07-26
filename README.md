@@ -42,3 +42,4 @@ This app uses:
 *   id. This is a serial and the primary key to refer to comments in the database.
 *   author. This is a string equal to the patient or doctor's firstName and lastName concatenated.
 *   content. This is a string. 
+*   interlocutor. This is a string to link each comment to the other person in the conversation. 
