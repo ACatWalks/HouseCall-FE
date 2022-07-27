@@ -1,14 +1,17 @@
 import { useState } from "react"
+import { useParams } from 'react-router'
 import NavBar from "./NavBar"
 
 function SymptomForm() {
 
     const [symptoms, setSymptoms] = useState([])
 
+    const userId = useParams()
+
     async function handleSubmit(e) {
         e.preventDefault()
 
-        await fetch(`http://localhost:4000/patients/:id`, {
+        await fetch(`http://localhost:4000/patients/${userId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

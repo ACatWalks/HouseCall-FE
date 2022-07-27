@@ -31,6 +31,7 @@ function ProfilePage() {
                 setMedicalLicenseNumber(resData.medicalLicenseNumber)
             }
         }
+        fetchData()
     }, [ userId ])
 
     function handleRole(role) {

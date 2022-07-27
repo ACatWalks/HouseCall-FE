@@ -33,6 +33,7 @@ function EditProfileForm() {
                 setMedicalLicenseNumber(resData.medicalLicenseNumber)
             }
         }
+        fetchData()
     }, [ userId ])
 
     async function handleSubmit(e, role) {

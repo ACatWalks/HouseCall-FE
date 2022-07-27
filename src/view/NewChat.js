@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useParams } from 'react-router'
 
 function NewChat({ onSubmit }) {
     const [authors, setAuthors] = useState([])
@@ -10,10 +11,17 @@ function NewChat({ onSubmit }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:4000/medical-provider/patients`)
-            const users = await response.json()
-            setComment({...comment, author: users[0]?.userId})
-            setAuthors(users)
+            try {
+                const response = await fetch(`http://localhost:4000/patients/${userId}`)
+                const resData = await response.json()
+                //setComment({...comment, author: users[0]?.userId})
+                //setAuthors(users)
+            } catch {
+                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const resData = await response.json()
+                //setComment({...comment, author: users[0]?.userId})
+                //setAuthors(users)
+            }
         }
         fetchData()
     }, [])

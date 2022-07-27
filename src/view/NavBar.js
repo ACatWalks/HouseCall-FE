@@ -29,6 +29,7 @@ function NavBar() {
                 setUser(resData)
             }
         }
+        fetchData()
     }, [ userId ])
 
     function handleRole(role) {
