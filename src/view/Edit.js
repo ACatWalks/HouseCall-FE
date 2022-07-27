@@ -33,12 +33,13 @@ function EditProfileForm() {
                 setMedicalLicenseNumber(resData.medicalLicenseNumber)
             }
         }
+        fetchData()
     }, [ userId ])
 
     async function handleSubmit(e, role) {
         e.preventDefault()
         if(role === 'Doctor') {
-            await fetch(`http://localhost:4000/medical-provider/${user.userId}`, {
+            await fetch(`http://localhost:4000/medical-provider/${userId}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ function EditProfileForm() {
                 body: JSON.stringify(user)
             })
         } else {
-            await fetch(`http://localhost:4000/patients/${user.userId}`, {
+            await fetch(`http://localhost:4000/patients/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,7 +55,7 @@ function EditProfileForm() {
                 body: JSON.stringify(user)
             })
         }
-        navigate(`/${user.userId}`)
+        navigate(`/${userId}`)
     }
 
     function handleRole(role) {
