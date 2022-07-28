@@ -80,7 +80,7 @@ function NavBar() {
             )
         }
     }
-
+    
     return (
         <div className='nav'>
             <ul>
