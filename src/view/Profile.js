@@ -1,38 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useState } from "react";
 import NavBar from "./NavBar";
 
 function ProfilePage() {
-    const userId = useParams()
 
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        pass: '',
-        role: ''
+        firstName: sessionStorage.getItem('firstName'),
+        lastName: sessionStorage.getItem('lastName'),
+        email: sessionStorage.getItem('email'),
+        pass: sessionStorage.getItem('pass'),
+        role: sessionStorage.getItem('role')
     })
 
     const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
-
-    useEffect(() => {
-        const fetchData = async() => {
-            try {
-                const response = await fetch(`http://localhost:4000/patients/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-                setProfilepic(resData.profilepic)
-            } catch {
-                const response = await fetch(`http://localhost:4000/medical-doctors/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-                setNPIMedicalLicense(resData.NPIMedicalLicense)
-            }
-        }
-        fetchData()
-    }, [ userId ])
 
     function handleRole(role) {
         if(role === 'Doctor'){

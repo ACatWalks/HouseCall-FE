@@ -28,6 +28,8 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
+        console.log(user)
+        navigate('/')
         } else {
             await fetch(`http://localhost:4000/patients/`, {
             method: 'POST',
@@ -40,19 +42,20 @@ function SignUpForm() {
         navigate('/')
     }
     }
+
     function handleRole(role) {
         if(role === 'Doctor'){
             return (
                 <div>
                     <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => setNPIMedicalLicense(e.target.value)} />
+                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => {setNPIMedicalLicense(e.target.value)}} />
                 </div>
             )
         } else {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => {setProfilepic(e.target.value)}} />
                 </div>
             )
         }

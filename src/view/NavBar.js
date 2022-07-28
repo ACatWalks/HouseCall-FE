@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {Link, Outlet} from 'react-router-dom'
-import { useParams } from 'react-router'
 
 function NavBar() {
-
-    const userId = useParams()
 
     const [user, setUser] = useState({
         firstName: sessionStorage.getItem('firstName'),
         lastName: sessionStorage.getItem('lastName'),
         email: sessionStorage.getItem('email'),
-        pass: '',
-        role: sessionStorage.getItem('role')
+        pass: sessionStorage.getItem('pass'),
+        role: sessionStorage.getItem('role'),
+        profilepic: ''
     })
 
-    const [profilepic, setProfilepic] = useState('')
 
-    /*useEffect(() => {
-        const fetchData = async() => {
-            try {
-                const response = await fetch(`http://localhost:4000/patients/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-                setProfilepic(resData.profilepic)
-            } catch {
-                const response = await fetch(`http://localhost:4000/medical-doctors/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-            }
-        }
-        fetchData()
-    }, [ userId ])*/
 
     function handleRole(role) {
         if(role === 'Doctor'){
@@ -56,10 +38,10 @@ function NavBar() {
     }
 
     function pic() {
-        if(profilepic){
+        if(user.profilepic){
             return (
                 <div>
-                    <img src={profilepic} />
+                    <img src={user.profilepic} />
                 </div>
             )
         }
