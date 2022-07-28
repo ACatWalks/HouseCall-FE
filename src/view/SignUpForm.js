@@ -29,6 +29,7 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
+        sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         navigate('/')
         } else {
             await fetch(`http://localhost:4000/patients/`, {
@@ -39,6 +40,7 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
+        sessionStorage.setItem('profilepic', profilepic)
         navigate('/')
     }
     }
@@ -55,7 +57,7 @@ function SignUpForm() {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => {setProfilepic(e.target.value)}} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
                 </div>
             )
         }
