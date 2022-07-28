@@ -14,7 +14,7 @@ function NavBar() {
         role: ''
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     useEffect(() => {
         const fetchData = async() => {
@@ -22,9 +22,9 @@ function NavBar() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setProfilePic(resData.profilePic)
+                setProfilepic(resData.profilepic)
             } catch {
-                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const response = await fetch(`http://localhost:4000/medical-doctors/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
             }
@@ -56,10 +56,10 @@ function NavBar() {
     }
 
     function pic() {
-        if(profilePic){
+        if(profilepic){
             return (
                 <div>
-                    <img src={profilePic} />
+                    <img src={profilepic} />
                 </div>
             )
         }

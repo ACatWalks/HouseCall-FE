@@ -15,7 +15,7 @@ function EditProfileForm() {
         role: ''
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
@@ -25,9 +25,9 @@ function EditProfileForm() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setProfilePic(resData.profilePic)
+                setProfilepic(resData.profilepic)
             } catch {
-                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const response = await fetch(`http://localhost:4000/medical-doctors/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
                 setNPIMedicalLicense(resData.NPIMedicalLicense)
@@ -39,7 +39,7 @@ function EditProfileForm() {
     async function handleSubmit(e, role) {
         e.preventDefault()
         if(role === 'Doctor') {
-            await fetch(`http://localhost:4000/medical-provider/${userId}`, {
+            await fetch(`http://localhost:4000/medical-doctors/${userId}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ function EditProfileForm() {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
                 </div>
             )
         }
@@ -92,7 +92,7 @@ function EditProfileForm() {
                 <label htmlFor='email'>Email</label>
                 <input required value={user.email} id="email" name="email" onChange={e => setUser({...user, email: e.target.value})} />
                 <label htmlFor='password'>Password</label>
-                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, password: e.target.value})} />
+                <input required value={user.pass} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 {handleRole(user.role)}
                 <input type="submit" className='form-btn' value="Save Changes" />
             </form>

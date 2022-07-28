@@ -13,14 +13,14 @@ function SignUpForm() {
         role: ''
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
     async function handleSubmit(e, role) {
         e.preventDefault()
         if(role === 'Doctor'){
-            await fetch(`http://localhost:4000/medical-provider/`, {
+            await fetch(`http://localhost:4000/medical-doctors/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,8 +35,7 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
-        }
-        
+        console.log(user)
         navigate('/')
     }
     }
@@ -52,25 +51,7 @@ function SignUpForm() {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
-                </div>
-            )
-        }
-    }
-
-    function handleRole(role) {
-        if(role === 'Doctor'){
-            return (
-                <div>
-                    <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={medicalLicenseNumber} id="medicalLicense" name="medicalLicense" onChange={e => setMedicalLicenseNumber(e.target.value)} />
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={patientProfileImage} onChange={e => setPatientProfileImage(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
                 </div>
             )
         }
@@ -93,7 +74,7 @@ function SignUpForm() {
                 <label htmlFor='email'>Email</label>
                 <input required value={user.email} id="email" name="email" onChange={e => setUser({...user, email: e.target.value})} />
                 <label htmlFor='password'>Password</label>
-                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
+                <input required value={user.pass} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 {handleRole(user.role)}
                 <input type="submit" className='form-btn' value="Sign Up" />
             </form>

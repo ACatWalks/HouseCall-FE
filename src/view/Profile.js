@@ -13,7 +13,7 @@ function ProfilePage() {
         role: ''
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
@@ -23,9 +23,9 @@ function ProfilePage() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setProfilePic(resData.profilePic)
+                setProfilepic(resData.profilepic)
             } catch {
-                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const response = await fetch(`http://localhost:4000/medical-doctors/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
                 setNPIMedicalLicense(resData.NPIMedicalLicense)
@@ -44,7 +44,7 @@ function ProfilePage() {
         } else {
             return (
                 <div>
-                    <h5>Profile Image: {user.profilePic}</h5>
+                    <h5>Profile Image: {user.profilepic}</h5>
                 </div>
             )
         }
