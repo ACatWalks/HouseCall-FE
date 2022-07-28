@@ -19,7 +19,7 @@ function NewChat({ onSubmit }) {
                 //setComment({...comment, author: users[0]?.userId})
                 //setAuthors(users)
             } catch {
-                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
+                const response = await fetch(`http://localhost:4000/medical-doctors${userId}`)
                 const resData = await response.json()
                 //setComment({...comment, author: users[0]?.userId})
                 //setAuthors(users)

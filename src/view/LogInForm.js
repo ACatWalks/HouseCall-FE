@@ -31,7 +31,8 @@ function LogInForm() {
         })
         const data = await response.json()
         if(response.status === 200){
-            setUser(data.user)
+            setUser(data)
+            console.log(data)
             navigate('/')
         } else {
             setErrorMessage(data.message)
@@ -47,7 +48,7 @@ function LogInForm() {
                 <label htmlFor="email">Email</label>
                 <input type="email" required value={credentials.email} onChange={e => setCredentials({...credentials, email: e.target.value})} name="email" id="email" />
                 <label htmlFor="password">Password</label>
-                <input type="password" required value={credentials.password} onChange={e => setCredentials({...credentials, pass: e.target.value})} name="password" id="password" />
+                <input type="password" required value={credentials.pass} onChange={e => setCredentials({...credentials, pass: e.target.value})} name="password" id="password" />
                 <input type="submit" value="Login" className="form-btn" />
             </form>
         </main>
