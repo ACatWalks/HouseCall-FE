@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router'
 
 function NewChat({ onSubmit }) {
+    const userId = useParams()
+
     const [authors, setAuthors] = useState([])
 
     const [comment, setComment] = useState({
