@@ -22,21 +22,33 @@ function EditProfileForm() {
     async function handleSubmit(e) {
         e.preventDefault()
         if(user.role === 'Doctor') {
-            await fetch(`http://localhost:4000/medical-doctors/${userId}`, {
+            await fetch(`http://localhost:4000/medical-doctors/${user.email}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(user)
             })
+            sessionStorage.setItem('firstName', user.firstName)
+            sessionStorage.setItem('lastName', user.lastName)
+            sessionStorage.setItem('email', user.email)
+            sessionStorage.setItem('pass', user.pass)
+            sessionStorage.setItem('role', user.role)
+            sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         } else {
-            await fetch(`http://localhost:4000/patients/${userId}`, {
+            await fetch(`http://localhost:4000/patients/${user.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(user)
             })
+            sessionStorage.setItem('firstName', user.firstName)
+            sessionStorage.setItem('lastName', user.lastName)
+            sessionStorage.setItem('email', user.email)
+            sessionStorage.setItem('pass', user.pass)
+            sessionStorage.setItem('role', user.role)
+            sessionStorage.setItem('profilepic', profilepic)
         }
         navigate(`/${userId}`)
     }
