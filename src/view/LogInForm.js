@@ -37,6 +37,7 @@ function LogInForm() {
             sessionStorage.setItem('firstName', data.firstName)
             sessionStorage.setItem('lastName', data.lastName)
             sessionStorage.setItem('email', data.email)
+            sessionStorage.setItem('pass', data.pass)
             sessionStorage.setItem('role', data.role)
             navigate('/')
         } else {
@@ -58,6 +59,7 @@ function LogInForm() {
                 sessionStorage.setItem('firstName', data.firstName)
                 sessionStorage.setItem('lastName', data.lastName)
                 sessionStorage.setItem('email', data.email)
+                sessionStorage.setItem('pass', data.pass)
                 sessionStorage.setItem('role', data.role)
                 navigate('/')
             } else {
