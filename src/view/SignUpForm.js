@@ -35,6 +35,8 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
+        }
+        
         navigate('/')
     }
     }
@@ -51,6 +53,24 @@ function SignUpForm() {
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
                     <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
+                </div>
+            )
+        }
+    }
+
+    function handleRole(role) {
+        if(role === 'Doctor'){
+            return (
+                <div>
+                    <label htmlFor='medicalLicense'>Medical License No.</label>
+                    <input required value={medicalLicenseNumber} id="medicalLicense" name="medicalLicense" onChange={e => setMedicalLicenseNumber(e.target.value)} />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <label htmlFor='profilePic'>Profile Picture Link</label>
+                    <input id="profilePic" name='profilePic' value={patientProfileImage} onChange={e => setPatientProfileImage(e.target.value)} />
                 </div>
             )
         }
