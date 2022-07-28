@@ -7,16 +7,16 @@ function NavBar() {
     const userId = useParams()
 
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
+        firstName: sessionStorage.getItem('firstName'),
+        lastName: sessionStorage.getItem('lastName'),
+        email: sessionStorage.getItem('email'),
         pass: '',
-        role: ''
+        role: sessionStorage.getItem('role')
     })
 
     const [profilepic, setProfilepic] = useState('')
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async() => {
             try {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
@@ -30,7 +30,7 @@ function NavBar() {
             }
         }
         fetchData()
-    }, [ userId ])
+    }, [ userId ])*/
 
     function handleRole(role) {
         if(role === 'Doctor'){
@@ -64,7 +64,10 @@ function NavBar() {
             )
         }
     }
-
+    function logout() {
+        setUser({firstName:'', lastName:'', email: '', pass: '', role: ''})
+        sessionStorage.clear()
+    }
     function toggle() {
         if(!user.email){
             return (
@@ -75,7 +78,7 @@ function NavBar() {
         } else{
             return (
                 <li>
-                  <Link to="/" onClick={e => setUser({firstName: '', lastName: '', email: '', pass: '', role: ''})}>Log Out</Link>  
+                  <Link to="/" onClick={logout}>Log Out</Link>  
                 </li>
             )
         }
