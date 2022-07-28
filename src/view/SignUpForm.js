@@ -29,6 +29,7 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
+        sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         navigate('/')
         } else {
             await fetch(`http://localhost:4000/patients/`, {
@@ -39,6 +40,7 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
+        sessionStorage.setItem('profilepic', profilepic)
         navigate('/')
     }
     }
@@ -77,7 +79,7 @@ function SignUpForm() {
                 <label htmlFor='email'>Email</label>
                 <input required value={user.email} id="email" name="email" onChange={e => setUser({...user, email: e.target.value})} />
                 <label htmlFor='password'>Password</label>
-                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
+                <input required value={user.pass} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 {handleRole(user.role)}
                 <input type="submit" className='form-btn' value="Sign Up" />
             </form>

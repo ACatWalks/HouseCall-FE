@@ -9,7 +9,7 @@ function NavBar() {
         email: sessionStorage.getItem('email'),
         pass: sessionStorage.getItem('pass'),
         role: sessionStorage.getItem('role'),
-        profilepic: ''
+        profilepic: sessionStorage.getItem('profilepic')
     })
 
     function handleRole(role) {
@@ -46,7 +46,7 @@ function NavBar() {
     }
 
     function logout() {
-        setUser({firstName:'', lastName:'', email: '', pass: '', role: ''})
+        setUser({firstName:'', lastName:'', email: '', pass: '', role: '', profilepic: ''})
         sessionStorage.clear()
     }
 
