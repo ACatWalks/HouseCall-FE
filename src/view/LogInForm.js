@@ -9,12 +9,12 @@ function LogInForm() {
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
+        pass: ''
     })
 
     const [credentials, setCredentials] = useState({
         email: '',
-        password: ''
+        pass: ''
     })
 
     const [errorMessage, setErrorMessage] = useState(null)
@@ -47,7 +47,7 @@ function LogInForm() {
                 <label htmlFor="email">Email</label>
                 <input type="email" required value={credentials.email} onChange={e => setCredentials({...credentials, email: e.target.value})} name="email" id="email" />
                 <label htmlFor="password">Password</label>
-                <input type="password" required value={credentials.password} onChange={e => setCredentials({...credentials, password: e.target.value})} name="password" id="password" />
+                <input type="password" required value={credentials.password} onChange={e => setCredentials({...credentials, pass: e.target.value})} name="password" id="password" />
                 <input type="submit" value="Login" className="form-btn" />
             </form>
         </main>

@@ -10,11 +10,11 @@ function NavBar() {
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
+        pass: '',
         role: ''
     })
 
-    const [patientProfileImage, setPatientProfileImage] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
     useEffect(() => {
         const fetchData = async() => {
@@ -22,7 +22,7 @@ function NavBar() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setPatientProfileImage(resData.patientProfileImage)
+                setProfilePic(resData.profilePic)
             } catch {
                 const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
                 const resData = await response.json()
@@ -56,10 +56,10 @@ function NavBar() {
     }
 
     function pic() {
-        if(patientProfileImage){
+        if(profilePic){
             return (
                 <div>
-                    <img src={patientProfileImage} />
+                    <img src={profilePic} />
                 </div>
             )
         }
@@ -75,7 +75,7 @@ function NavBar() {
         } else{
             return (
                 <li>
-                  <Link to="/" onClick={e => setUser({firstName: '', lastName: '', email: '', password: '', role: ''})}>Log Out</Link>  
+                  <Link to="/" onClick={e => setUser({firstName: '', lastName: '', email: '', pass: '', role: ''})}>Log Out</Link>  
                 </li>
             )
         }

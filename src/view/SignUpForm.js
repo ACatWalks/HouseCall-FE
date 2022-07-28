@@ -9,13 +9,13 @@ function SignUpForm() {
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
+        pass: '',
         role: ''
     })
 
-    const [patientProfileImage, setPatientProfileImage] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
-    const [medicalLicenseNumber, setMedicalLicenseNumber] = useState(0)
+    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
     async function handleSubmit(e, role) {
         e.preventDefault()
@@ -45,14 +45,14 @@ function SignUpForm() {
             return (
                 <div>
                     <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={medicalLicenseNumber} id="medicalLicense" name="medicalLicense" onChange={e => setMedicalLicenseNumber(e.target.value)} />
+                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => setNPIMedicalLicense(e.target.value)} />
                 </div>
             )
         } else {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={patientProfileImage} onChange={e => setPatientProfileImage(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
                 </div>
             )
         }
@@ -93,7 +93,7 @@ function SignUpForm() {
                 <label htmlFor='email'>Email</label>
                 <input required value={user.email} id="email" name="email" onChange={e => setUser({...user, email: e.target.value})} />
                 <label htmlFor='password'>Password</label>
-                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, password: e.target.value})} />
+                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 {handleRole(user.role)}
                 <input type="submit" className='form-btn' value="Sign Up" />
             </form>

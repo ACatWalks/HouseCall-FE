@@ -11,13 +11,13 @@ function EditProfileForm() {
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
+        pass: '',
         role: ''
     })
 
-    const [patientProfileImage, setPatientProfileImage] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
-    const [medicalLicenseNumber, setMedicalLicenseNumber] = useState(0)
+    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
     useEffect(() => {
         const fetchData = async() => {
@@ -25,12 +25,12 @@ function EditProfileForm() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setPatientProfileImage(resData.patientProfileImage)
+                setProfilePic(resData.profilePic)
             } catch {
                 const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setMedicalLicenseNumber(resData.medicalLicenseNumber)
+                setNPIMedicalLicense(resData.NPIMedicalLicense)
             }
         }
         fetchData()
@@ -63,14 +63,14 @@ function EditProfileForm() {
             return (
                 <div>
                     <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={medicalLicenseNumber} id="medicalLicense" name="medicalLicense" onChange={e => setMedicalLicenseNumber(e.target.value)} />
+                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => setNPIMedicalLicense(e.target.value)} />
                 </div>
             )
         } else {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={patientProfileImage} onChange={e => setPatientProfileImage(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
                 </div>
             )
         }

@@ -9,13 +9,13 @@ function ProfilePage() {
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
+        pass: '',
         role: ''
     })
 
-    const [patientProfileImage, setPatientProfileImage] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
-    const [medicalLicenseNumber, setMedicalLicenseNumber] = useState(0)
+    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
     useEffect(() => {
         const fetchData = async() => {
@@ -23,12 +23,12 @@ function ProfilePage() {
                 const response = await fetch(`http://localhost:4000/patients/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setPatientProfileImage(resData.patientProfileImage)
+                setProfilePic(resData.profilePic)
             } catch {
                 const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
                 const resData = await response.json()
                 setUser(resData)
-                setMedicalLicenseNumber(resData.medicalLicenseNumber)
+                setNPIMedicalLicense(resData.NPIMedicalLicense)
             }
         }
         fetchData()
@@ -38,13 +38,13 @@ function ProfilePage() {
         if(role === 'Doctor'){
             return (
                 <div>
-                    <h5>Medical License No. : {user.medicalLicenseNumber}</h5>
+                    <h5>Medical License No. : {user.NPIMedicalLicense}</h5>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <h5>Profile Image: {user.patientProfileImage}</h5>
+                    <h5>Profile Image: {user.profilePic}</h5>
                 </div>
             )
         }
