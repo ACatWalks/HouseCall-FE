@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import NavBar from './NavBar'
 
@@ -8,38 +8,21 @@ function EditProfileForm() {
     const userId = useParams()
 
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        pass: '',
-        role: ''
+        firstName: sessionStorage.getItem('firstName'),
+        lastName: sessionStorage.getItem('lastName'),
+        email: sessionStorage.getItem('email'),
+        pass: sessionStorage.getItem('pass'),
+        role: sessionStorage.getItem('role')
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
-    useEffect(() => {
-        const fetchData = async() => {
-            try {
-                const response = await fetch(`http://localhost:4000/patients/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-                setProfilePic(resData.profilePic)
-            } catch {
-                const response = await fetch(`http://localhost:4000/medical-provider/${userId}`)
-                const resData = await response.json()
-                setUser(resData)
-                setNPIMedicalLicense(resData.NPIMedicalLicense)
-            }
-        }
-        fetchData()
-    }, [ userId ])
-
-    async function handleSubmit(e, role) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        if(role === 'Doctor') {
-            await fetch(`http://localhost:4000/medical-provider/${userId}`, {
+        if(user.role === 'Doctor') {
+            await fetch(`http://localhost:4000/medical-doctors/${userId}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -70,7 +53,7 @@ function EditProfileForm() {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
                 </div>
             )
         }
@@ -80,7 +63,7 @@ function EditProfileForm() {
         <main>
             <NavBar />
             <h1>Edit Profile Page</h1>
-            <form onSubmit={handleSubmit(user.role)}>
+            <form onSubmit={handleSubmit}>
                 <input type ='radio' id='doctor' name='role' value="Doctor" onClick={e => setUser({...user, role: "Doctor"})}/>
                 <label htmlFor='doctor'>Doctor</label>
                 <input type='radio' id='patient' name='role' value="Patient" onClick={e => setUser({...user, role: "Patient"})} />
@@ -92,7 +75,7 @@ function EditProfileForm() {
                 <label htmlFor='email'>Email</label>
                 <input required value={user.email} id="email" name="email" onChange={e => setUser({...user, email: e.target.value})} />
                 <label htmlFor='password'>Password</label>
-                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, password: e.target.value})} />
+                <input required value={user.pass} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 {handleRole(user.role)}
                 <input type="submit" className='form-btn' value="Save Changes" />
             </form>

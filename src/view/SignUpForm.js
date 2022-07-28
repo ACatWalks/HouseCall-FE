@@ -13,20 +13,23 @@ function SignUpForm() {
         role: ''
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
-    async function handleSubmit(e, role) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        if(role === 'Doctor'){
-            await fetch(`http://localhost:4000/medical-provider/`, {
+        if(user.role === 'Doctor'){
+            await fetch(`http://localhost:4000/medical-doctors/`, {
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         })
+        console.log(user)
+        navigate('/')
         } else {
             await fetch(`http://localhost:4000/patients/`, {
             method: 'POST',
@@ -35,6 +38,7 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
+        console.log(user)
         navigate('/')
     }
     }
@@ -50,7 +54,7 @@ function SignUpForm() {
             return (
                 <div>
                     <label htmlFor='profilePic'>Profile Picture Link</label>
-                    <input id="profilePic" name='profilePic' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
+                    <input id="profilePic" name='profilePic' value={profilepic} onChange={e => setProfilepic(e.target.value)} />
                 </div>
             )
         }
@@ -60,7 +64,7 @@ function SignUpForm() {
         <main>
             <NavBar />
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit(user.role)}>
+            <form onSubmit={handleSubmit}>
                 <h3>Sign Up As A:</h3>
                 <input type ='radio' id='doctor' name='role' value="Doctor" onClick={e => setUser({...user, role: "Doctor"})}/>
                 <label htmlFor='doctor'>Doctor</label>
