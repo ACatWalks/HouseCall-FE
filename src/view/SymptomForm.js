@@ -9,7 +9,6 @@ function SymptomForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
-
         await fetch(`http://localhost:4000/patients/${userEmail}`, {
             method: 'POST',
             headers: {

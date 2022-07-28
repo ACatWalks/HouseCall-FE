@@ -3,6 +3,18 @@ import NavBar from './view/NavBar';
 import './css/style.css'
 
 function App() {
+  async function fetchData() {
+    const response = await fetch(`http://localhost:4000`, {
+      mode: 'cors',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+    const res = response.json()
+    console.log(res)
+  }
+  fetchData()
+
   return (
     <div className="App">
       <NavBar />
