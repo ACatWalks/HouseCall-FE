@@ -11,7 +11,7 @@ function ProfilePage() {
         role: sessionStorage.getItem('role')
     })
 
-    const [profilePic, setProfilePic] = useState('')
+    const [profilepic, setProfilepic] = useState('')
 
     const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
 
@@ -25,7 +25,7 @@ function ProfilePage() {
         } else {
             return (
                 <div>
-                    <h5>Profile Image: {user.profilePic}</h5>
+                    <h5>Profile Image: {user.profilepic}</h5>
                 </div>
             )
         }
