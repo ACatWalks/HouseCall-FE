@@ -1,35 +1,12 @@
-import { useState, useEffect } from "react"
-import { useParams } from 'react-router'
+import { useState } from "react"
 
 function NewChat({ onSubmit }) {
-    const userId = useParams()
 
-    const [authors, setAuthors] = useState([])
+    const author = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
 
     const [comment, setComment] = useState({
         content: '',
-        author: ''
-    })
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://localhost:4000/patients/${userId}`)
-                const resData = await response.json()
-                //setComment({...comment, author: users[0]?.userId})
-                //setAuthors(users)
-            } catch {
-                const response = await fetch(`http://localhost:4000/medical-doctors${userId}`)
-                const resData = await response.json()
-                //setComment({...comment, author: users[0]?.userId})
-                //setAuthors(users)
-            }
-        }
-        fetchData()
-    }, [])
-
-    let authorOptions = authors.map(author => {
-        return <option key={author.userId} value={author.userId}>{author.firstName} {author.lastName}</option>
+        author: author
     })
 
     function handleSubmit(e) {
@@ -37,7 +14,7 @@ function NewChat({ onSubmit }) {
         onSubmit(comment)
         setComment({
             content: '',
-            authorId: authors[0]?.userId
+            author: ''
         })
     }
 
@@ -45,8 +22,7 @@ function NewChat({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <label htmlFor="content">Content</label>
             <textarea required id="content" name="content" value={comment.content} onChange={e => setComment({...comment, content: e.target.value})} />
-            <label htmlFor="author">Author</label>
-            <select value={comment.author} onChange={e => setComment({...comment, author: e.target.value})} />
+            <label htmlFor="author">Author: {author}</label>
             <input type="submit" value="Reply" className="form-btn" />
         </form>
     )
