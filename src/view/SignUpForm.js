@@ -20,6 +20,7 @@ function SignUpForm() {
     async function handleSubmit(e) {
         e.preventDefault()
         if(user.role === 'Doctor'){
+            user.NPIMedicalLicense = NPIMedicalLicense
             await fetch(`http://localhost:4000/medical-doctors/`, {
             method: 'POST',
             mode: 'cors',
@@ -32,6 +33,7 @@ function SignUpForm() {
         sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         navigate('/')
         } else {
+            user.profilepic = profilepic
             await fetch(`http://localhost:4000/patients/`, {
             method: 'POST',
             headers: {

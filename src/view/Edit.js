@@ -15,13 +15,14 @@ function EditProfileForm() {
         role: sessionStorage.getItem('role')
     })
 
-    const [profilepic, setProfilepic] = useState('')
+    const [profilepic, setProfilepic] = useState(sessionStorage.getItem('profilepic'))
 
-    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
+    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(sessionStorage.getItem('NPIMedicalLicense'))
 
     async function handleSubmit(e) {
         e.preventDefault()
         if(user.role === 'Doctor') {
+            user.NPIMedicalLicense = NPIMedicalLicense
             await fetch(`http://localhost:4000/medical-doctors/${user.email}`, {
                 method: 'PUT', 
                 headers: {
@@ -36,6 +37,7 @@ function EditProfileForm() {
             sessionStorage.setItem('role', user.role)
             sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         } else {
+            user.profilepic = profilepic
             await fetch(`http://localhost:4000/patients/${user.email}`, {
                 method: 'PUT',
                 headers: {
