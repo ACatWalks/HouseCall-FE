@@ -14,7 +14,7 @@ function NewChat({ onSubmit }) {
         onSubmit(comment)
         setComment({
             content: '',
-            author: ''
+            author: author
         })
     }
 
