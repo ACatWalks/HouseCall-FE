@@ -30,7 +30,6 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
-        sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         navigate('/')
         } else {
             user.profilepic = profilepic
@@ -42,7 +41,6 @@ function SignUpForm() {
             body: JSON.stringify(user)
         })
         console.log(user)
-        sessionStorage.setItem('profilepic', profilepic)
         navigate('/')
     }
     }
