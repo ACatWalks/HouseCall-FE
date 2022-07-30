@@ -3,6 +3,14 @@ import NewChat from "./NewChat";
 import NavBar from "./NavBar";
 
 function Chat() {
+    let comments = (
+        <h3 className="inactive">
+                 No chat items yet.
+        </h3>
+    )
+
+    let commentArr = []
+
     async function createComment(commentAttributes) {
         const response = await fetch(`http://localhost:4000/comments`, {
             method: 'POST',
@@ -12,21 +20,16 @@ function Chat() {
             body: JSON.stringify(commentAttributes)
         })
         const comment = await response.json()
+        commentArr.push(comment)
     }
 
-    let comments = (
-        <h3 className="inactive">
-            No chat items yet.
-        </h3>
-    )
-
-    if(comments.length) {
-        comments = comments.map(comment => {
+    if(commentArr.length) {
+        comments = commentArr.map(comment => {
             return (
                 <ChatCard key={comment.commentId} comment={comment} />
             )
         })
-    }
+    } 
 
     return (
         <main>
