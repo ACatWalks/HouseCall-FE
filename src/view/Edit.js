@@ -22,7 +22,7 @@ function EditProfileForm() {
     async function handleSubmit(e) {
         e.preventDefault()
         if(user.role === 'Doctor') {
-            user.NPIMedicalLicense = NPIMedicalLicense
+            user.NPIMedicalLicense = Number(NPIMedicalLicense)
             sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
             await fetch(`http://localhost:4000/medical-doctors/${user.email}`, {
                 method: 'PUT', 

@@ -15,7 +15,7 @@ function SignUpForm() {
 
     const [profilepic, setProfilepic] = useState('')
 
-    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
+    const [NPIMedicalLicense, setNPIMedicalLicense] = useState('Your medical license # here')
 
     async function handleSubmit(e) {
         e.preventDefault()
