@@ -79,15 +79,23 @@ function LogInForm() {
             {errorMessage !== null? (<div className="danger" role="alert">{errorMessage}</div>): null}
             <form onSubmit={handleSubmit}>
                 <h3>Log in as a:</h3>
+                <div className='row'>
                 <input type ='radio' id='doctor' name='role' value="Doctor" onClick={e => setUser({...user, role: "Doctor"})}/>
                 <label htmlFor='doctor'>Doctor</label>
                 <input type='radio' id='patient' name='role' value="Patient" onClick={e => setUser({...user, role: "Patient"})} />
                 <label htmlFor='patient'>Patient</label>
+                </div>
+                <div className='row'>
                 <label htmlFor="email">Email</label>
                 <input type="email" required value={credentials.email} onChange={e => setCredentials({...credentials, email: e.target.value})} name="email" id="email" />
+                </div>
+                <div className='row'>
                 <label htmlFor="password">Password</label>
                 <input type="password" required value={credentials.pass} onChange={e => setCredentials({...credentials, pass: e.target.value})} name="password" id="password" />
+                </div>
+                <div className='row'>
                 <input type="submit" value="Login" className="form-btn" />
+                </div>
             </form>
         </main>
     )

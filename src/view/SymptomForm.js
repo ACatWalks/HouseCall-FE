@@ -32,6 +32,7 @@ function SymptomForm() {
             <NavBar />
             <form onSubmit={handleSubmit}>
                 <h1>Please check the symptoms you are experiencing</h1>
+                <div className='row'>
                 <input type="checkbox" id="symptom1" name="symptom1" value="Anal Pain" className="sym" />
                 <label htmlFor="symptom1">Anal Pain</label>
                 <input type="checkbox" id="symptom2" name="symptom2" value="Anorexia" className="sym" />
@@ -42,6 +43,8 @@ function SymptomForm() {
                 <label htmlFor="symptom4">Chills</label>
                 <input type="checkbox" id="symptom5" name="symptom5" value="Constipation" className="sym" />
                 <label htmlFor="symptom5">Constipation</label>
+                </div>
+                <div className='row'>
                 <input type="checkbox" id="symptom6" name="symptom6" value="Diarrhea" className="sym" />
                 <label htmlFor="symptom6">Diarrhea</label>
                 <input type="checkbox" id="symptom7" name="symptom7" value="Eczema" className="sym" />
@@ -52,6 +55,8 @@ function SymptomForm() {
                 <label htmlFor="symptom9">Foot Pain</label>
                 <input type="checkbox" id="symptom10" name="symptom10" value="Gas" className="sym" />
                 <label htmlFor="symptom10">Gas</label>
+                </div>
+                <div className='row'>
                 <input type="checkbox" id="symptom11" name="symptom11" value="Halitosis" className="sym" />
                 <label htmlFor="symptom11">Halitosis</label>
                 <input type="checkbox" id="symptom12" name="symptom12" value="Indigestion" className="sym" />
@@ -62,6 +67,8 @@ function SymptomForm() {
                 <label htmlFor="symptom14">Mood Swings</label>
                 <input type="checkbox" id="symptom15" name="symptom15" value="Nerve Pain" className="sym" />
                 <label htmlFor="symptom15">Nerve Pain</label>
+                </div>
+                <div className='row'>
                 <input type="checkbox" id="symptom16" name="symptom16" value="Pain (general)" className="sym" />
                 <label htmlFor="symptom16">Pain (general)</label>
                 <input type="checkbox" id="symptom17" name="symptom17" value="Sneezing" className="sym" />
@@ -72,7 +79,10 @@ function SymptomForm() {
                 <label htmlFor="symptom19">Tonsillitis</label>
                 <input type="checkbox" id="symptom20" name="symptom20" value="Vomiting" className="sym" />
                 <label htmlFor="symptom20">Vomiting</label>
+                </div>
+                <div className='row'>
                 <input type="submit" value="Submit Symptoms" className="form-btn" />
+                </div>
             </form>
         </main>
     )

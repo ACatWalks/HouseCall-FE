@@ -2,6 +2,7 @@
 @import "button";
 @import "danger";
 @import "globals";
+@import "formRow";
 
 body {
     text-align: center;
@@ -13,13 +14,22 @@ body {
         flex-direction: row;
         & ul {
             list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
         }
         & a {
             text-decoration: none;
-            color: $text-color
+            color: $text-color;
+            padding-left: 25px;
+            padding-right: 25px;
         }
         & a:hover {
             color: $hover-color
+        }
+        & img {
+            border-radius: 50%;
+            margin: 10px;
         }
     }
     & img {
@@ -33,5 +43,10 @@ body {
     }
     & .danger {
         @include danger;
+    }
+    & form {
+        & .row {
+            @include formRow
+        }
     }
 }
