@@ -27,9 +27,9 @@ function NavBar() {
             )
         } else{
             return (
-                <div>
+                <li>
                     You must be logged in.
-                </div>
+                </li>
 
             )
         }
@@ -39,7 +39,7 @@ function NavBar() {
         if(user.profilepic){
             return (
                 <div>
-                    <img src={user.profilepic} />
+                    <img src={user.profilepic} alt="My profile pic" />
                 </div>
             )
         }
@@ -75,8 +75,8 @@ function NavBar() {
                 <li><Link to="/edit">Edit Profile</Link></li>
                 <li><Link to="/symptoms">Report Symptoms</Link></li>
                 <li><Link to="/chat">Chat With a Doctor</Link></li>
+                {handleRole(user.role)}
             </ul>
-            {handleRole(user.role)}
             {pic}
             <Outlet />
         </div>

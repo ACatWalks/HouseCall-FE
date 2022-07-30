@@ -20,10 +20,16 @@ function NewChat({ onSubmit }) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <div className='row'>
             <label htmlFor="content">Content</label>
             <textarea required id="content" name="content" value={comment.content} onChange={e => setComment({...comment, content: e.target.value})} />
+            </div>
+            <div className='row'>
             <label htmlFor="author">Author: {author}</label>
+            </div>
+            <div className='row'>
             <input type="submit" value="Reply" className="form-btn" />
+            </div>
         </form>
     )
 }
