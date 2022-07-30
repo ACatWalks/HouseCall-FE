@@ -44,12 +44,13 @@ function SignUpForm() {
         navigate('/')
     }
     }
+
     function handleRole(role) {
         if(role === 'Doctor'){
             return (
                 <div>
                     <label htmlFor='medicalLicense'>Medical License No.</label>
-                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => setNPIMedicalLicense(e.target.value)} />
+                    <input required value={NPIMedicalLicense} id="medicalLicense" name="medicalLicense" onChange={e => {setNPIMedicalLicense(e.target.value)}} />
                 </div>
             )
         } else {

@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# HouseCalls
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What This App Does
 
-## Available Scripts
+Patients can sign up, login, submit their symptoms to a secure database, and chat with a doctor. 
 
-In the project directory, you can run:
+## Why It Matters
 
-### `npm start`
+In the age of COVID-19 more and more services are moving from an in-person model to a virtual model. This is especially relevant given that patients in doctors' waiting rooms are, by definition, less healthy than the general population. Also allows patients with limited time to receive medical advice when an in-person consultation is not necessary or convenient to the patient.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This app uses:
 
-### `npm test`
+### Back End:
+*   Node with Express
+*   MongoDB
+*   Mongoose
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Front End:
+*   React
+*   Sass
 
-### `npm run build`
+## Schemas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Patient
+*   id. This is a serial and the primary key to look up or edit patient information.
+*   firstName and lastName. These are strings that are displayed at the top of the page to welcome the patient after s/he logs in.
+*   profileImage. This is a url that links to a profile image the patient can use to associate with his/her account. 
+*   email. This is a string that the user can use as a username for login purposes.
+*   password. This is a string that enables user authentication.
+*   symptoms. This is an enum that tracks patient symtoms. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Doctor
+*   id. This is a serial and the primary key to refer to doctors in the database.
+*   firstName and lastName. These are strings that are displayed at the top of the page to welcome the doctor after s/he logs in.
+*   email. This is a string that the doctor can use as a username for login purposes.
+*   password. This is a string that enables doctor authentication.
+*   NPIMedicalLicense. This is a number that checks that the user is in fact a medical doctor authorized to offer medical advice.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Comment
+*   id. This is a serial and the primary key to refer to comments in the database.
+*   author. This is a string equal to the patient or doctor's firstName and lastName concatenated.
+*   content. This is a string. 
+*   interlocutor. This is a string to link each comment to the other person in the conversation. 
