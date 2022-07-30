@@ -76,8 +76,8 @@ function NavBar() {
                 <li><Link to="/symptoms">Report Symptoms</Link></li>
                 <li><Link to="/chat">Chat With a Doctor</Link></li>
                 {handleRole(user.role)}
+                {pic()}
             </ul>
-            {pic}
             <Outlet />
         </div>
     )

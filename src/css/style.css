@@ -29,6 +29,7 @@ body .nav img {
 }
 body img {
   height: 80vh;
+  width: 80vw;
 }
 body .form-btn {
   border-radius: 10px;
@@ -55,6 +56,30 @@ body form .row label {
 body form .row input {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    text-align: center;
+  }
+  body .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  body .nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  body .nav a {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  body img {
+    height: 60vh;
+    width: 80vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
