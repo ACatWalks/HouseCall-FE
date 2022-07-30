@@ -1,31 +1,30 @@
-import { useState } from "react";
 import NavBar from "./NavBar";
 
 function ProfilePage() {
 
-    const [user, setUser] = useState({
+    const user = {
         firstName: sessionStorage.getItem('firstName'),
         lastName: sessionStorage.getItem('lastName'),
         email: sessionStorage.getItem('email'),
         pass: sessionStorage.getItem('pass'),
         role: sessionStorage.getItem('role')
-    })
+    }
 
-    const [profilepic, setProfilepic] = useState('')
+    let profilePic = sessionStorage.getItem('profilepic')
 
-    const [NPIMedicalLicense, setNPIMedicalLicense] = useState(0)
+    let NPIMedicalLicense = sessionStorage.getItem('NPIMedicalLicense')
 
     function handleRole(role) {
         if(role === 'Doctor'){
             return (
                 <div>
-                    <h5>Medical License No. : {user.NPIMedicalLicense}</h5>
+                    <h5>Medical License No. : {NPIMedicalLicense}</h5>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <h5>Profile Image: {user.profilepic}</h5>
+                    <h5>Profile Image: {profilePic}</h5>
                 </div>
             )
         }

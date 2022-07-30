@@ -93,7 +93,7 @@ function EditProfileForm() {
                 </div>
                 <div className='row'>
                 <label htmlFor='password'>Password</label>
-                <input required value={user.pass} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
+                <input required value={user.password} id="password" name="password" onChange={e => setUser({...user, pass: e.target.value})} />
                 </div>
                 <div className='row'>
                 {handleRole(user.role)}

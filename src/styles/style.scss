@@ -34,6 +34,7 @@ body {
     }
     & img {
         height: 80vh;
+        width: 80vw;
     }
     & .form-btn {
         @include button;
@@ -50,3 +51,29 @@ body {
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    body{
+        text-align: center;
+        & .nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            & ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            & a {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+        & img {
+            height: 60vh;
+            width: 80vw;
+        }
+    }
+}
+
+
