@@ -30,11 +30,6 @@ function EditProfileForm() {
                 },
                 body: JSON.stringify(user)
             })
-            sessionStorage.setItem('firstName', user.firstName)
-            sessionStorage.setItem('lastName', user.lastName)
-            sessionStorage.setItem('email', user.email)
-            sessionStorage.setItem('pass', user.pass)
-            sessionStorage.setItem('role', user.role)
             sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
         } else {
             user.profilepic = profilepic
@@ -45,13 +40,13 @@ function EditProfileForm() {
                 },
                 body: JSON.stringify(user)
             })
-            sessionStorage.setItem('firstName', user.firstName)
-            sessionStorage.setItem('lastName', user.lastName)
-            sessionStorage.setItem('email', user.email)
-            sessionStorage.setItem('pass', user.pass)
-            sessionStorage.setItem('role', user.role)
             sessionStorage.setItem('profilepic', profilepic)
         }
+        sessionStorage.setItem('firstName', user.firstName)
+        sessionStorage.setItem('lastName', user.lastName)
+        sessionStorage.setItem('email', user.email)
+        sessionStorage.setItem('pass', user.pass)
+        sessionStorage.setItem('role', user.role)
         navigate(`/${userId}`)
     }
 

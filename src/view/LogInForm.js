@@ -39,6 +39,7 @@ function LogInForm() {
             sessionStorage.setItem('email', data.email)
             sessionStorage.setItem('pass', data.pass)
             sessionStorage.setItem('role', data.role)
+            sessionStorage.setItem('profilepic', data.profilepic)
             navigate('/')
         } else {
             setErrorMessage(data.message)
@@ -61,6 +62,7 @@ function LogInForm() {
                 sessionStorage.setItem('email', data.email)
                 sessionStorage.setItem('pass', data.pass)
                 sessionStorage.setItem('role', data.role)
+                sessionStorage.setItem('NPIMedicalLicense', data.NPIMedicalLicense)
                 navigate('/')
             } else {
                 setErrorMessage(data.message)
