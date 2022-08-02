@@ -10,7 +10,8 @@ function LogInForm() {
         lastName: '',
         email: '',
         pass: '',
-        role: ''
+        role: '',
+        id: ''
     })
 
     const [credentials, setCredentials] = useState({
@@ -40,6 +41,7 @@ function LogInForm() {
             sessionStorage.setItem('pass', data.pass)
             sessionStorage.setItem('role', data.role)
             sessionStorage.setItem('profilepic', data.profilepic)
+            sessionStorage.setItem('id', data.id)
             navigate('/')
         } else {
             setErrorMessage(data.message)
@@ -63,6 +65,7 @@ function LogInForm() {
                 sessionStorage.setItem('pass', data.pass)
                 sessionStorage.setItem('role', data.role)
                 sessionStorage.setItem('NPIMedicalLicense', data.NPIMedicalLicense)
+                sessionStorage.setItem('id', data.id)
                 navigate('/')
             } else {
                 setErrorMessage(data.message)
