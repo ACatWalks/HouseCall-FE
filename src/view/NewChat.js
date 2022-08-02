@@ -44,11 +44,11 @@ function NewChat({ onSubmit }) {
     return (
         <form onSubmit={e => createChat(e)}>
             <div className='row'>
-            <label htmlFor="content">Enter Medical License</label>
+            <label htmlFor="content">Enter Id of other User To Create New Chat</label>
             <textarea required id="content" name="content" onChange={e => setOtherUserId(e)}  />
             </div>
             <div className='row'>
-            <label htmlFor="author">Author:</label>
+            {/* <label htmlFor="author">Author:</label> */}
             </div>
             <div className='row'>
             <input type="submit" className="form-btn" />

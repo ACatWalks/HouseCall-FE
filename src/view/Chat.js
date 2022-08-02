@@ -16,8 +16,13 @@ function Chat() {
     const [chats, setChats] = useState([])
     
     const getAllChats = async () => {
-            
-            const req = await fetch(`http://localhost:4000/chats/patientChats/${userId}`,{
+            let query_string = ''
+            if (userRole === 'Patient'){
+                query_string = 'http://localhost:4000/chats/patientChats/'
+            } else {
+                query_string = 'http://localhost:4000/chats/doctorChats/'
+            }
+            const req = await fetch(`${query_string}${userId}`,{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,7 +56,7 @@ function Chat() {
     return (
         <main>
             <NavBar />
-            <h2>Enter A Doctor's License Number</h2>
+            <h2>Your Chats</h2>
             {/* {comments} */}
             <hr />
             <NewChat  />
