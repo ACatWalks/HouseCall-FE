@@ -1,9 +1,10 @@
-import ChatCard from "./ChatCard";
+// import ChatCard from "./ChatCard";
 import NewChat from "./NewChat";
 import NavBar from "./NavBar";
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
-import NewMessage from "./NewMessage";
+// import NewMessage from "./NewMessage";
+import {Link} from 'react-router-dom'
 function Chat() {
     const chatId = useParams()
     const userId = sessionStorage.getItem('id')
@@ -61,9 +62,11 @@ function Chat() {
             <hr />
             <NewChat  />
             {
-                chats.map(chat => {
+                chats.map(chatId => {
                     return (
-                        <p href={chat} className="form">Chat id {chat}</p>
+                        <li className="form">
+                            <Link to={`/chat-activity/${chatId}`}>Join chat for </Link>
+                        </li>
                     )
                 })
             }

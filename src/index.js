@@ -11,6 +11,7 @@ import SymptomForm from './view/SymptomForm'
 import Chat from './view/Chat'
 import EditProfileForm from './view/Edit';
 import ProfilePage from './view/Profile';
+import ChatActivity from './view/ChatActivity';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
       <Route path="/chat" element={<Chat />} />
       <Route path="/edit" element={<EditProfileForm />} />
       <Route path="/:id" element={<ProfilePage />} />
+      <Route path="/chat-activity/:chatId" element={<ChatActivity/>} />
     </Routes>
   </BrowserRouter>
 );
