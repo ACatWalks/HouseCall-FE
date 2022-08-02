@@ -10,7 +10,7 @@ function SignUpForm() {
         lastName: '',
         email: '',
         pass: '',
-        role: ''
+        role: '',
     })
 
     const [profilepic, setProfilepic] = useState('')

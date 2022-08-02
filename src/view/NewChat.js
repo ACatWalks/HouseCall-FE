@@ -4,17 +4,21 @@ function NewChat({ onSubmit }) {
 
     const author = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
 
-    const [comment, setComment] = useState({
-        content: '',
-        author: author
+    const userRole = sessionStorage.getItem('role')
+
+    const [message, setMessage] = useState({
+        text: '',
+        author: author,
+        onModel: userRole
     })
 
     function handleSubmit(e) {
         e.preventDefault()
-        onSubmit(comment)
-        setComment({
-            content: '',
-            author: author
+        onSubmit(message)
+        setMessage({
+            text: '',
+            author: author,
+            onModel: userRole
         })
     }
 
@@ -22,7 +26,7 @@ function NewChat({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <div className='row'>
             <label htmlFor="content">Content</label>
-            <textarea required id="content" name="content" value={comment.content} onChange={e => setComment({...comment, content: e.target.value})} />
+            <textarea required id="content" name="content" value={message.text} onChange={e => setMessage({...message, text: e.target.value})} />
             </div>
             <div className='row'>
             <label htmlFor="author">Author: {author}</label>
