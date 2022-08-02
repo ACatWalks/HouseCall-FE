@@ -6,36 +6,52 @@ function NewChat({ onSubmit }) {
 
     const userRole = sessionStorage.getItem('role')
     const userId = sessionStorage.getItem('id')
+    // const [message, setMessage] = useState({
+    //     text: '',
+    //     author: author,
+    //     onModel: userRole
+    // })
 
-    const [message, setMessage] = useState({
-        text: '',
-        author: userId,
-        onModel: userRole
-    })
-
-    function handleSubmit(e) {
+    let reqBody = {
+        doctor: '',
+        patient: ''
+    }
+    function setOtherUserId(e) {
         e.preventDefault()
-        sessionStorage.setItem('text', message.text)
-        onSubmit(message)
-        sessionStorage.removeItem('text')
-        setMessage({
-            text: '',
-            author: userId,
-            onModel: userRole
+        reqBody.doctor = e.target.value 
+    }
+
+    if(userRole === 'Patient'){
+        reqBody.patient = userId
+    } else {
+        reqBody.doctor = userId
+    }
+   
+    async function createChat(e) {
+        e.preventDefault()
+
+        const chat = await fetch(`http://localhost:4000/chats/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reqBody)
         })
+        const res = await chat.json()
+        console.log(res)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={e => createChat(e)}>
             <div className='row'>
-            <label htmlFor="content">Content</label>
-            <textarea required id="content" name="content" value={message.text} onChange={e => setMessage({...message, text: e.target.value})} />
+            <label htmlFor="content">Enter Id of other User To Create New Chat</label>
+            <textarea required id="content" name="content" onChange={e => setOtherUserId(e)}  />
             </div>
             <div className='row'>
-            <label htmlFor="author">Author: {by}</label>
+            {/* <label htmlFor="author">Author:</label> */}
             </div>
             <div className='row'>
-            <input type="submit" value="Reply" className="form-btn" />
+            <input type="submit" className="form-btn" />
             </div>
         </form>
     )
