@@ -1,8 +1,9 @@
 function ChatCard({ message }) {
+    const by = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
     return (
         <div className="border">
-            <h4>{message.content}</h4>
-            <h3><strong>- {message.author}</strong></h3>
+            <h4>{message.text}</h4>
+            <h3><strong>- {by}</strong></h3>
         </div>
     )
 }

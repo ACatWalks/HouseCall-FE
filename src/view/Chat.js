@@ -54,7 +54,6 @@ function Chat() {
         <main>
             <NavBar />
             <h2>Your Chats</h2>
-        
             <hr />
             <NewChat  />
             {

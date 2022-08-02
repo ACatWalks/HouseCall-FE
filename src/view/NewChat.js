@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function NewChat({ onSubmit }) {
 
-    const author = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
+    const by = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
 
     const userRole = sessionStorage.getItem('role')
     const userId = sessionStorage.getItem('id')
