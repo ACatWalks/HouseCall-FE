@@ -1,19 +1,15 @@
 // import ChatCard from "./ChatCard";
 import NewChat from "./NewChat";
 import NavBar from "./NavBar";
-import { useParams } from 'react-router'
+// import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 // import NewMessage from "./NewMessage";
 import {Link} from 'react-router-dom'
 function Chat() {
-    const chatId = useParams()
+    
     const userId = sessionStorage.getItem('id')
     const userRole = sessionStorage.getItem('role')
-    let comments = (
-        <h3 className="inactive">
-                 No chat items yet.
-        </h3>
-    )
+   
     const [chats, setChats] = useState([])
     
     const getAllChats = async () => {
@@ -58,7 +54,7 @@ function Chat() {
         <main>
             <NavBar />
             <h2>Your Chats</h2>
-            {/* {comments} */}
+        
             <hr />
             <NewChat  />
             {
@@ -70,7 +66,7 @@ function Chat() {
                     )
                 })
             }
-            {/* <NewMessage /> */}
+         
         </main>
     )
 }
