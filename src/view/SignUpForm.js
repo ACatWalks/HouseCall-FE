@@ -29,7 +29,6 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
-        console.log(user)
         navigate('/')
         } else {
             user.profilepic = profilepic
@@ -40,7 +39,6 @@ function SignUpForm() {
             },
             body: JSON.stringify(user)
         })
-        console.log(user)
         navigate('/')
     }
     }

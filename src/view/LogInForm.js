@@ -34,7 +34,6 @@ function LogInForm() {
         const data = await response.json()
         if(response.status === 200){
             setUser(data)
-            console.log(data)
             sessionStorage.setItem('firstName', data.firstName)
             sessionStorage.setItem('lastName', data.lastName)
             sessionStorage.setItem('email', data.email)
@@ -58,7 +57,6 @@ function LogInForm() {
             const data = await response.json()
             if(response.status === 200){
                 setUser(data)
-                console.log(data)
                 sessionStorage.setItem('firstName', data.firstName)
                 sessionStorage.setItem('lastName', data.lastName)
                 sessionStorage.setItem('email', data.email)

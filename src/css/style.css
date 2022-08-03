@@ -37,6 +37,11 @@ body .form-btn {
 }
 body .border {
   border: 1px dashed black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
 }
 body .danger {
   background-color: firebrick;
@@ -56,6 +61,10 @@ body form .row label {
 body form .row input {
   margin-left: 5px;
   margin-right: 5px;
+}
+body .flex {
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1000px) {
