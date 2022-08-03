@@ -31,13 +31,14 @@ function ChatActivity(){
 
     async function handleSubmit(e) {
         e.preventDefault()
-        const messageCreated = await fetch(`http://localhost:4000/messages/${chatId}`, {
+        const messageCreated = await fetch(`http://localhost:4000/chats/messages/${chatId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newMessage)
         })
+        content()
     }
     return(
         <div>
