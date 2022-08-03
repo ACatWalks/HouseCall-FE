@@ -55,4 +55,4 @@ This app uses:
 *   content. This is an array of messages.
 
 ## Issues
-Currently the user cannot update his/her email address, although all other aspects of the user profile can be edited. Currently new comments are not posting to the database. Future features could include the ability to update or delete comments, the ability to write in additional symptoms, and the ability to schedule an in-person visit with the doctor.
+Currently the user cannot update his/her email address, although all other aspects of the user profile can be edited. User must also know the id # of his/her interlocutor to start a chat, which is not ideal. Future features could include the ability to update or delete comments, the ability to write in additional symptoms, and the ability to schedule an in-person visit with the doctor.
