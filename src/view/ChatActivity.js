@@ -9,10 +9,20 @@ function ChatActivity(){
     const userRole = sessionStorage.getItem('role')
     const userId = sessionStorage.getItem('id')
     const by = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName')
+    function handleRole() {
+        let result;
+        if(userRole === 'Doctor') {
+            result = 'medicalProvider'
+        } else {
+            result = 'Patient'
+        }
+        return result
+    }
+
     const [newMessage, setNewMessage] = useState({
         text: '',
         author: userId,
-        onModel: userRole
+        onModel: handleRole()
     })
     const content = async () =>{
         const req = await fetch(`https://house-calls-be.herokuapp.com/chats/${chatId}`, {
@@ -31,13 +41,14 @@ function ChatActivity(){
 
     async function handleSubmit(e) {
         e.preventDefault()
-        const messageCreated = await fetch(`https://house-calls-be.herokuapp.com/chats/messages/${chatId}`, {
+         await fetch(`https://house-calls-be.herokuapp.com/chats/messages/${chatId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newMessage)
         })
+        console.log(newMessage)
         content()
     }
     return(
@@ -48,7 +59,7 @@ function ChatActivity(){
                <ChatCard message={message} />
            )
        })}
-       <form onSubmit={handleSubmit}>
+       <form onSubmit={e => handleSubmit(e)}>
            <input textarea required onChange={e => setNewMessage({...newMessage, text: e.target.value})}/>
            <p>By: {by}</p>
            <input type="submit" value="Add New Comment" className="form-btn" />
