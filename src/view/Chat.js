@@ -12,9 +12,9 @@ function Chat() {
     const getAllChats = async () => {
             let query_string = ''
             if (userRole === 'Patient'){
-                query_string = 'http://localhost:4000/chats/patientChats/'
+                query_string = 'https://house-calls-be.herokuapp.com/chats/patientChats/'
             } else {
-                query_string = 'http://localhost:4000/chats/doctorChats/'
+                query_string = 'https://house-calls-be.herokuapp.com/chats/doctorChats/'
             }
             const req = await fetch(`${query_string}${userId}`,{
                 method: 'GET',
