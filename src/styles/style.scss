@@ -3,6 +3,7 @@
 @import "danger";
 @import "globals";
 @import "formRow";
+@import "flex";
 
 body {
     text-align: center;
@@ -49,6 +50,9 @@ body {
         & .row {
             @include formRow
         }
+    }
+    & .flex {
+        @include flex
     }
 }
 

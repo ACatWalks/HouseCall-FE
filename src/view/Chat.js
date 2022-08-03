@@ -1,9 +1,6 @@
-// import ChatCard from "./ChatCard";
 import NewChat from "./NewChat";
 import NavBar from "./NavBar";
-// import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
-// import NewMessage from "./NewMessage";
 import {Link} from 'react-router-dom'
 function Chat() {
     
@@ -27,7 +24,6 @@ function Chat() {
                 mode: 'cors'
             })
             const res = await req.json()
-            
             setChats(res.data)
     }
     useEffect(() => {
@@ -39,7 +35,6 @@ function Chat() {
     const displayChats = ()=> {
         
         chats.map(chat =>{
-            console.log(chat)
           return(
               <h1>{chat}</h1>
           )  
