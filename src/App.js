@@ -4,7 +4,7 @@ import './css/style.css'
 
 function App() {
   async function fetchData() {
-    const response = await fetch(`http://localhost:4000`, {
+    const response = await fetch(`https://house-calls-be.herokuapp.com/`, {
       mode: 'cors',
       headers: {
           'Content-Type': 'application/json'

@@ -15,7 +15,7 @@ function ChatActivity(){
         onModel: userRole
     })
     const content = async () =>{
-        const req = await fetch(`http://localhost:4000/chats/${chatId}`, {
+        const req = await fetch(`https://house-calls-be.herokuapp.com/chats/${chatId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function ChatActivity(){
 
     async function handleSubmit(e) {
         e.preventDefault()
-        const messageCreated = await fetch(`http://localhost:4000/chats/messages/${chatId}`, {
+        const messageCreated = await fetch(`https://house-calls-be.herokuapp.com/chats/messages/${chatId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

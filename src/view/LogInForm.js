@@ -24,7 +24,7 @@ function LogInForm() {
     async function handleSubmit(e) {
         e.preventDefault()
         if(user.role === 'Patient'){
-            const response = await fetch(`http://localhost:4000/authentication/${credentials.email}`, {
+            const response = await fetch(`https://house-calls-be.herokuapp.com/authentication/${credentials.email}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function LogInForm() {
             }
         }
         else{
-            const response = await fetch(`http://localhost:4000/authentication/employee/${credentials.email}`, {
+            const response = await fetch(`https://house-calls-be.herokuapp.com/authentication/employee/${credentials.email}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

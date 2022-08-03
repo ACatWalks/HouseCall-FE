@@ -21,7 +21,7 @@ function SignUpForm() {
         e.preventDefault()
         if(user.role === 'Doctor'){
             user.NPIMedicalLicense = Number(NPIMedicalLicense)
-            await fetch(`http://localhost:4000/medical-doctors/`, {
+            await fetch(`https://house-calls-be.herokuapp.com/medical-doctors/`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -32,7 +32,7 @@ function SignUpForm() {
         navigate('/')
         } else {
             user.profilepic = profilepic
-            await fetch(`http://localhost:4000/patients/`, {
+            await fetch(`https://house-calls-be.herokuapp.com/patients/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

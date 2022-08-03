@@ -26,7 +26,7 @@ function SymptomForm() {
         let uniqueSymptoms = [...new Set(startingSymptoms)]
         let symptoms = [...uniqueSymptoms]
         user.symptoms = symptoms
-        await fetch(`http://localhost:4000/patients/${user.email}`, {
+        await fetch(`https://house-calls-be.herokuapp.com/patients/${user.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
