@@ -30,6 +30,8 @@ This app uses:
 *   email. This is a string that the user can use as a username for login purposes.
 *   password. This is a string that enables user authentication.
 *   symptoms. This is an enum that tracks patient symtoms. 
+*   role. This is set to "Patient".
+*   chats. This is an array of all chats the patient has had.
 
 ### Doctor
 *   id. This is a serial and the primary key to refer to doctors in the database.
@@ -37,9 +39,20 @@ This app uses:
 *   email. This is a string that the doctor can use as a username for login purposes.
 *   password. This is a string that enables doctor authentication.
 *   NPIMedicalLicense. This is a number that checks that the user is in fact a medical doctor authorized to offer medical advice.
+*   role. This is set to "Doctor".
+*   chats. This is an array of all chats the doctor has had.
 
-### Comment
+### Message
 *   id. This is a serial and the primary key to refer to comments in the database.
-*   author. This is a string equal to the patient or doctor's firstName and lastName concatenated.
-*   content. This is a string. 
-*   interlocutor. This is a string to link each comment to the other person in the conversation. 
+*   author. This is a string equal to the patient or doctor's id.
+*   text. This is a string. 
+*   onModel. This is an enum that identifies the author as a patient or doctor.
+
+### Chat
+*   id. This is a serial and the primary key to look up chats in the database.
+*   doctor. This is the id of the doctor in the chat.
+*   patient. This is the id of the patient in the chat.
+*   content. This is an array of messages.
+
+## Issues
+Currently the user cannot update his/her email address, although all other aspects of the user profile can be edited. Currently new comments are not posting to the database. Future features could include the ability to update or delete comments, the ability to write in additional symptoms, and the ability to schedule an in-person visit with the doctor.
