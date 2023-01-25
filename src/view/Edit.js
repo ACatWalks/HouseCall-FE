@@ -24,7 +24,7 @@ function EditProfileForm() {
         if(user.role === 'Doctor') {
             user.NPIMedicalLicense = Number(NPIMedicalLicense)
             sessionStorage.setItem('NPIMedicalLicense', NPIMedicalLicense)
-            await fetch(`https://house-calls-be.herokuapp.com/medical-doctors/${user.email}`, {
+            await fetch(`http://localhost:4000/medical-doctors/${user.email}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function EditProfileForm() {
         } else {
             user.profilepic = profilepic
             sessionStorage.setItem('profilepic', profilepic)
-            await fetch(`https://house-calls-be.herokuapp.com/patients/${user.email}`, {
+            await fetch(`http://localhost:4000/patients/${user.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

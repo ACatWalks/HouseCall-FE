@@ -22,7 +22,7 @@ function NewChat() {
     async function createChat(e) {
         e.preventDefault()
 
-        const chat = await fetch(`https://house-calls-be.herokuapp.com/chats/`, {
+        const chat = await fetch(`http://localhost:4000/chats/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -12,9 +12,9 @@ function Chat() {
     const getAllChats = async () => {
             let query_string = ''
             if (userRole === 'Patient'){
-                query_string = 'https://house-calls-be.herokuapp.com/chats/patientChats/'
+                query_string = 'http://localhost:4000/chats/patientChats/'
             } else {
-                query_string = 'https://house-calls-be.herokuapp.com/chats/doctorChats/'
+                query_string = 'http://localhost:4000/chats/doctorChats/'
             }
             const req = await fetch(`${query_string}${userId}`,{
                 method: 'GET',
@@ -52,9 +52,9 @@ function Chat() {
             <hr />
             <NewChat  />
             {
-                chats.map(chatId => {
+                chats.map((chatId, key) => {
                     return (
-                        <li className="form">
+                        <li className="form" key={key}>
                             <Link to={`/chat-activity/${chatId}`}>Join chat for </Link>
                         </li>
                     )
